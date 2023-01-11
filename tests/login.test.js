@@ -1,44 +1,21 @@
 import { Selector } from "testcafe";
+import { login } from "../helper";
 
 //prettier-ignore
 fixture `Login Test`
     .page `http://zero.webappsecurity.com/index.html`
 
 test('User cannot login with invalid credentials', async t => {
-    const signInButton = Selector('#signin_button')
-    await t.click(signInButton)
-
-    const loginForm = Selector('#login_form')
-    await t.expect(loginForm.exists).ok()
-
-    const usernameInput = Selector('#user_login')
-    const passwordInput = Selector('#user_password')
-    await t.typeText(usernameInput, 'invalid username', { paste: true })
-    await t.typeText(passwordInput, 'invalid password', { paste: true })
-
-    const submitButton = Selector('.btn-primary')
-    await t.click(submitButton)
-
+    await login('invalid username', 'invalid password')
     const errorMessage = Selector('.alert-error').innerText
     await t.expect(errorMessage).contains('Login and/or password are wrong.')
-
 })
 
-test.skip('User can login with valid credentials', async t => {
+test('User can login with valid credentials', async t => {
+    await login('username', 'password')
     const signInButton = Selector('#signin_button')
-    await t.click(signInButton)
-
     const loginForm = Selector('#login_form')
-    await t.expect(loginForm.exists).ok()
-
-    const usernameInput = Selector('#user_login')
-    const passwordInput = Selector('#user_password')
-    await t.typeText(usernameInput, 'username', { paste: true })
-    await t.typeText(passwordInput, 'password', { paste: true })
-
-    const submitButton = Selector('.btn-primary')
-    await t.click(submitButton)
-
+    
     const accountSummaryTab = Selector('#account_summary_tab')
     await t.expect(accountSummaryTab.exists).ok()
     await t.expect(loginForm.exists).notOk()
