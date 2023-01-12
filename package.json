@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test:chrome": "testcafe chrome ./tests -s takeOnFails=true --disable-page-caching",
+    "test:chrome:parallel_5": "testcafe -c 5 chrome ./tests -s takeOnFails=true",
     "test:chrome:headless": "testcafe chrome:headless ./tests -s takeOnFails=true",
+    "test:chrome:headless_parallel_5": "testcafe -c 5 chrome:headless ./tests -s takeOnFails=true",
     "test:chrome:mobile": "testcafe chrome:emulation:device=iphone 12 Pro ./tests -s takeOnFails=true",
-    "test:firefox": "testcafe firefox ./tests -s takeOnFails=true"
+    "test:firefox": "testcafe firefox ./tests -s takeOnFails=true",
+    "test:crossbrowser_parallel": "testcafe chrome,firefox ./tests -s takeOnFails=true"
   },
   "keywords": [
     "TestCafe",

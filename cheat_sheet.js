@@ -78,3 +78,6 @@
     //Sandboxes for practicing:
     //https://devexpress.github.io/testcafe/example/
     //http://zero.webappsecurity.com/index.html
+
+    //parallel execution
+    //"test:chrome:5": "testcafe -c 5 chrome ./tests -s takeOnFails=true"
