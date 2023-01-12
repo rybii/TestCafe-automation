@@ -81,3 +81,13 @@
 
     //parallel execution
     //"test:chrome:5": "testcafe -c 5 chrome ./tests -s takeOnFails=true"
+
+    //How to use xPath in TestCafe (not supported from the box)
+
+    // XPATH to CSS Example
+    //first import dependency in the top of the file with test: import xPathToCss from "xpath-to-css";
+    // create variable "xPath" with xpath
+    //const xPath = `'//*[@id="signin_button"]/i'`
+    // create another variable "css" &use the function xPathToCss
+    //const css = xPathToCss(xPath)
+    //Then it's possible to use "css" as a variable in other steps (it's already css which is supported by TestCafe)
