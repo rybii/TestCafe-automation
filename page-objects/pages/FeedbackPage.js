@@ -1,7 +1,9 @@
 import { Selector, t } from "testcafe";
+import BasePage from "./BasePage";
 
-class FedbackPage {
+class FedbackPage extends BasePage {
     constructor() {
+        super()
         this.formName = Selector('#name')
         this.formEmail = Selector('#email')
         this.formSubject = Selector('#subject')
